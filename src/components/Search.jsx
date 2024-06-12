@@ -1,3 +1,4 @@
+import axios from 'axios'
 import React, { useState } from 'react'
 
 const Search = () => {
@@ -13,46 +14,31 @@ const Search = () => {
         searchData({ ...data, [event.target.name]: event.target.value })
     }
 
+
+
+    const [result, setResult] = useState([])
+
     const readValue = () => {
         console.log(data)
+        axios.post("http://localhost:8080/search", data).then(
+
+            (response) => {
+                setResult(response.data)
+            }
+
+
+        ).catch(
+
+            (error) => {
+                console.log(error.message)
+                alert("error occured")
+            }
+
+        )
     }
 
 
-    const [result, setResult] = useState(
 
-
-        [
-            {
-                "_id": "6669e84bcb6ca09ad2bea79b",
-                "name": "Den",
-                "course": "MCA",
-                "year": "1",
-                "batch": "A",
-                "rollNo": "17",
-                "admNo": "1234",
-                "mob": "9878967564",
-                "dob": "09-08-2001",
-                "event": "mock cid",
-                "gpname": "Ruby",
-                "__v": 0
-            },
-            {
-                "_id": "6669ed9ab1580fea68605dd2",
-                "name": "vyvin",
-                "course": "MCA",
-                "year": "2",
-                "batch": "B",
-                "rollNo": "55",
-                "admNo": "5467",
-                "mob": "9878990564",
-                "dob": "11-08-2000",
-                "event": "mock cid",
-                "gpname": "diamond",
-                "__v": 0
-            }
-        ]
-
-    )
 
 
     return (
