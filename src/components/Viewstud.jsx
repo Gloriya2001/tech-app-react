@@ -1,56 +1,30 @@
-import React, { useState } from 'react'
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
 
 const Viewstud = () => {
 
-const [data,changeData] = useState(
+const [data,changeData] = useState([])
+
+const fetchData = () => {
+
+axios.post("http://localhost:8080/view").then(
+
+(response) => {
+    changeData(response.data)}
 
 
-    [
-        {
-            "_id": "6669e84bcb6ca09ad2bea79b",
-            "name": "Den",
-            "course": "MCA",
-            "year": "1",
-            "batch": "A",
-            "rollNo": "17",
-            "admNo": "1234",
-            "mob": "9878967564",
-            "dob": "09-08-2001",
-            "event": "mock cid",
-            "gpname": "Ruby",
-            "__v": 0
-        },
-        {
-            "_id": "6669ed9ab1580fea68605dd2",
-            "name": "vyvin",
-            "course": "MCA",
-            "year": "2",
-            "batch": "B",
-            "rollNo": "55",
-            "admNo": "5467",
-            "mob": "9878990564",
-            "dob": "11-08-2000",
-            "event": "mock cid",
-            "gpname": "diamond",
-            "__v": 0
-        },
-        {
-            "_id": "666a05e7e2da20cc4cd2e6e6",
-            "name": "GLORIYA JOHNSON",
-            "course": "MCA",
-            "year": "2023-25",
-            "batch": "A",
-            "rollNo": "55",
-            "admNo": "101",
-            "mob": "7689564355",
-            "dob": "2001-11-09",
-            "event": "Mock Recrutement",
-            "gpname": "Cryptoz",
-            "__v": 0
-        }
-    ]
+).catch(
+
+    (error) => {
+        alert(error.message)
+    }
+
 )
 
+
+}
+
+useEffect(()=>{fetchData()},[])
 
 
     return (
