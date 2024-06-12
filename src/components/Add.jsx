@@ -1,3 +1,4 @@
+import axios from 'axios'
 import React, { useState } from 'react'
 
 const Add = () => {
@@ -24,7 +25,32 @@ const inputHandler = (event) => {
 
 const readValue = () => {
    console.log(data)
+    
+   axios.post("http://localhost:8080/add",data).then(
+
+    (response) => {
+
+        if (response.data.status == "sucess") {
+
+            alert("Successfully Added")
+            
+        } else {
+            alert("Error!!")
+        }
+    }
+
+
+   ).catch(
+(error) => {
+    console.log(error.message)
 }
+
+   )
+
+
+
+}
+ 
 
 
 
