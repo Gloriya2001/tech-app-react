@@ -1,6 +1,33 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const Add = () => {
+
+const [data,setData] = useState(
+    {
+        "name":"",
+        "course":"",
+        "year":"",
+        "batch":"",
+        "rollNo":"",
+        "admNo":"",
+        "mob":"",
+        "dob":"",
+        "event":"",
+        "gpname":""
+
+    }
+)
+
+const inputHandler = (event) => {
+    setData({...data,[event.target.name]:event.target.value})
+}
+
+const readValue = () => {
+   console.log(data)
+}
+
+
+
     return (
         <div>
 
@@ -11,10 +38,12 @@ const Add = () => {
                         <div className="row g-3">
 
                             <h2 className="text-center">Student Registration for Events</h2>
+
+
                             <div className="col col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
 
                                 <label htmlFor="" className="form-label">Student Name</label>
-                                <input type="text" className="form-control" />
+                                <input type="text" className="form-control" name='name' value={data.name} onChange={inputHandler}/>
                             </div>
 
 
@@ -22,7 +51,7 @@ const Add = () => {
 
 
                                 <label htmlFor="" className="form-label"> Course Name</label>
-                                <input type="text" className="form-control" />
+                                <input type="text" className="form-control" name='course' value={data.course} onChange={inputHandler}/>
                             </div>
 
 
@@ -31,7 +60,7 @@ const Add = () => {
 
                                 <label htmlFor="">Academic year</label>
 
-                                <input type="text" className="form-control" />
+                                <input type="text" className="form-control" name='year' value={data.year} onChange={inputHandler}/>
 
                             </div>
 
@@ -40,14 +69,14 @@ const Add = () => {
 
 
                                 <label htmlFor="" className="form-label">Batch</label>
-                                <input type="text" className="form-control" />
+                                <input type="text" className="form-control" name='batch' value={data.batch} onChange={inputHandler}/>
 
                             </div>
 
 
                             <div className="col col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
                                 <label htmlFor="" className="form-label">Roll Number</label>
-                                <input type="text" className="form-control" />
+                                <input type="text" className="form-control" name='rollNo' value={data.rollNo} onChange={inputHandler}/>
 
 
 
@@ -59,7 +88,7 @@ const Add = () => {
 
 
                                 <label htmlFor="" className="form-label">Admission Number</label>
-                                <input type="text" className="form-control" />
+                                <input type="text" className="form-control" name='admNo' value={data.admNo} onChange={inputHandler} />
 
 
                             </div>
@@ -69,7 +98,7 @@ const Add = () => {
 
 
                                 <label htmlFor="" className="form-label">Mobile Number</label>
-                                <input type="text" className="form-control" />
+                                <input type="text" className="form-control" name='mob' value={data.mob} onChange={inputHandler}/>
 
                             </div>
 
@@ -78,14 +107,14 @@ const Add = () => {
 
 
                                 <label htmlFor="" className="form-label">Date of Birth</label>
-                                <input type="date" id="" className="form-control" />
+                                <input type="date" id="" className="form-control" name='dob' value={data.dob} onChange={inputHandler}/>
                             </div>
 
 
                             <div className="col col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
 
                                 <label htmlFor="" className="form-label">Event Name</label>
-                                <select id="" className="form-control">
+                                <select id="" className="form-control" name='event' value={data.event} onChange={inputHandler}>
                                     <option value=""></option>
                                     <option value="Mock CID">Mock CID</option>
                                     <option value="Mock Recrutement">Mock Recrutement</option>
@@ -99,7 +128,7 @@ const Add = () => {
                             <div className="col col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
 
                                 <label htmlFor="" className="form-label">Group Name</label>
-                                <select id="" className="form-control">
+                                <select id="" className="form-control" name='gpname' value={data.gpname} onChange={inputHandler}>
                                     <option value=""></option>
                                     <option value="Ruby">Ruby</option>
                                     <option value="Diamond">Diamond</option>
@@ -112,7 +141,7 @@ const Add = () => {
 
                             <div className="col col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
 
-                                <button className="btn btn-success">Register</button>
+                                <button className="btn btn-success" onClick={readValue}>Register</button>
 
                             </div>
 
