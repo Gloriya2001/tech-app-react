@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, { useState } from 'react'
+import Navbar from './Navbar'
 
 const Search = () => {
 
@@ -44,11 +45,13 @@ const Search = () => {
     return (
         <div>
 
+<Navbar/>
+
             <div className="container">
                 <div className="row">
                     <div className="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
 
-                        <h2>Search Students in the Event</h2>
+                        <h2 className="text-center">Search Students in the Event</h2>
 
                         <div className="row g-3">
 
@@ -57,7 +60,13 @@ const Search = () => {
                             <div className="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
 
                                 <label htmlFor="" className="form-label">Event</label>
-                                <input type="text" className="form-control" name='event' value={data.event} onChange={inputHandler} />
+                                <select id="" className="form-control" name='event' value={data.event} onChange={inputHandler}>
+                                    <option value=""></option>
+                                    <option value="Mock CID">Mock CID</option>
+                                    <option value="Mock Recrutement">Mock Recrutement</option>
+                                    <option value="Treasure Hunt">Treasure Hunt</option>
+                                    <option value="Find the Error">Find the Error</option>
+                                </select>
 
                             </div>
                             <div className="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
